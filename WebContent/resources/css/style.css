@@ -1,0 +1,205 @@
+*
+{
+	outline: 0;
+	padding: 0;
+	margin: 0;
+}
+nav.navbar.navbar-default
+{
+	background: transparent;
+	border: none;
+}
+#logo
+{
+	display: inline;
+	width: 40px;
+	height: 40px;
+}
+#logoText:hover
+{
+	color: white;
+}
+.navbar-brand span
+{
+	font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+}
+nav.navbar.navbar-default a
+{
+	color: white;
+	font-weight: 700;
+}
+.navbar-nav>li>a.navBarBtn
+{
+    padding: 20px 40px 0 0;
+}
+#idxLoginBtn
+{
+    margin: 14px 10px 0 -8px;
+    padding: 4px 10px 4px 10px;
+	border: 2px solid white;
+	border-radius: 4px;
+}
+#idxLoginBtn:hover
+{
+	border: 2px solid black;
+}
+.mainContainer
+{
+	background-image: url("../images/background.png");
+}
+.mainTitle
+{
+	height: 400px;
+	padding-top: 100px;
+	padding-left: 200px;
+	padding-right: 200px;
+	text-align: center;
+	color: white;
+}
+.mainTitle h1
+{
+    padding-bottom: 20px;
+	font-weight: 900;
+}
+.mainText
+{
+	font-size: 20px;
+}
+.mainTitleBtn
+{
+	background: transparent;
+	border: 2px solid white;
+	border-radius: 4px;
+}
+.mainTitleBtn:focus
+{
+    background: rgba(255, 255, 255, 0.1);
+    outline: 0;
+    border: 2px solid white;
+	border-radius: 4px;
+}
+.mainTitleBtn:hover, .mainTitleBtn:active:hover
+{
+	background: white;
+	color: black;
+	border: 2px solid white;
+}
+.mainContent
+{
+	margin-left: 40px;
+	margin-right: 40px;
+}
+.custPanel
+{
+	border: none;
+    border-radius: 0;
+    box-shadow: 4px 4px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.mainPanel1
+{
+	margin-top: 16px;
+	background: #f8f8f8;
+	cursor: pointer;
+}
+.mainPanel1:hover
+{
+    background: #f4f4f4;
+}
+.mainTopics
+{
+	margin: 0 0 0 40px;
+	width: 776px;
+}
+.custWell
+{
+	position: relative;
+    background: rgba(200, 200, 200, 0.4);
+}
+.custWell::after
+{
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4) inset;
+    pointer-events: none;
+}
+.topicsWrapper
+{
+    height: 240px;
+}
+.unstyledList
+{
+	list-style-type: none;
+}
+.topicsList
+{
+    height: 240px;
+    overflow: auto;
+}
+.topicsList li
+{
+    background: rgb(240, 240, 240);
+    height: 48px;
+    padding: 0 0 0 16px;
+    line-height: 48px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    box-shadow: 4px 4px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.chatWrapper
+{
+	height: 190px;
+}
+.chatMessages
+{
+	width: 360px;
+}
+.chatInput
+{
+    border: 1px solid rgb(200, 200, 200);
+    padding: 8px 0 8px 8px;
+    background: rgb(80, 80, 80);
+}
+.chatInput input
+{
+    width: 273px;
+    border-radius: 2px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.chatSend
+{
+	background: rgb(240, 240, 240);
+    border-radius: 50%;
+    border: none;
+    width: 32px;
+    height: 32px;
+}
+.footer
+{
+    border-top: 1px solid rgba(255,255,255,.4);
+	background: linear-gradient(to bottom,rgba(0,0,0,0.4) 0,#000 100%);
+}
+.footer li.cat
+{
+    padding-top: 20px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.footer li a
+{
+	font-size: 12px;
+    color: #9E9EA6;
+    text-decoration: none;
+}
+section.links
+{
+	background: transparent;
+    padding: 0 100px;
+}
