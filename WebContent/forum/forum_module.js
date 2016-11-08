@@ -1,0 +1,1 @@
+var forum = angular.module("forum", []);

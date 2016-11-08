@@ -9,15 +9,21 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" href="resources/css/style.css">
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="https://use.fontawesome.com/20c7f48529.js"></script>
+	<script type="text/javascript" src="https://use.fontawesome.com/20c7f48529.js"></script>
+	
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="main-view/main-view_module.js"></script>
+	<script type="text/javascript" src="main-view/main-view_directive.js"></script>
+	<script type="text/javascript" src="forum/forum_module.js"></script>
+	<script type="text/javascript" src="forum/forum-list_directive.js"></script>
 	<title>Cobalt: Forums</title>
 </head>
-<body>
+<body data-ng-app="forumApp">
 	<div class="mainContainer">
 		<div class="topBar">
 			<nav class="navbar navbar-default">
@@ -30,7 +36,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a id="logoText" class="navbar-brand" href="#">
+						<a id="logoText" class="navbar-brand" href="#!Home">
 							<img id="logo" src="http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png"/>
 							<span>Cobalt</span>
 						</a>
@@ -39,7 +45,7 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="navbar">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a class="navBarBtn" href="#">Forum</a></li>
+							<li><a class="navBarBtn" href="#!Forum">Forum</a></li>
 							<li><a class="navBarBtn" href="#">Blog</a></li>
 							<li><a class="navBarBtn" href="#">Listing</a></li>
 							<li><a class="navBarBtn" id="idxLoginBtn" href="#">Login</a></li>
@@ -48,106 +54,7 @@
 				</div><!-- /.container-fluid -->
 			</nav>
 		</div>
-		<div class="mainTitle">
-			<h1>No.1 Collaboration Portal</h1>
-			<p class="mainText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam feugiat a risus in pulvinar. Mauris facilisis laoreet neque mattis rhoncus. Donec ultrices metus vehicula convallis rhoncus.</p>
-			<p><a class="mainTitleBtn btn btn-primary btn-lg" href="#" role="button">Sign Up</a></p>
-		</div>
-		<div class="mainContent custPanel panel panel-default">
-			<div class="panel-body">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4 col-xs-12">
-							<div class="custPanel mainPanel1 panel panel-default">
-								<div class="panel-body">
-									<div class="media">
-										<div class="media-left">
-											<a href="#">
-												<img class="media-object" src="resources/images/forumIcon.svg" width="40" height="40" alt="...">
-											</a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">General Discussion</h4>
-											Discuss general topics
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-xs-12">
-							<div class="custPanel mainPanel1 panel panel-default">
-								<div class="panel-body">
-									<div class="media">
-										<div class="media-left">
-											<a href="#">
-												<img class="media-object" src="resources/images/blogIcon.svg" width="40" height="40" alt="...">
-											</a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">Blogs</h4>
-											Read and write blogs
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-xs-12">
-							<div class="custPanel mainPanel1 panel panel-default">
-								<div class="panel-body">
-									<div class="media">
-										<div class="media-left">
-											<a href="#">
-												<img class="media-object" src="resources/images/listingIcon.svg" width="40" height="40" alt="...">
-											</a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">Listings</h4>
-											View and Search Listings
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="mainTopics col-md-8 col-xs-12">
-					<h4>Latest Topics</h4>
-					<div class="custWell topicsWrapper">
-						<ul class="topicsList unstyledList">
-							<li>Test</li>
-							<li>Test</li>
-							<li>Test</li>
-							<li>Test</li>
-							<li>Test</li>
-							<li>Test</li>
-							<li>Test</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-4 col-xs-12">
-					<div class="chatContainer">
-						<h4>Chat</h4>
-						<div class="custWell chatWrapper">
-							<ul class="chatMessages unstyledList">
-								<li><div>Test</div></li>
-								<li><div>Test</div></li>
-								<li><div>Test</div></li>
-								<li><div>Test</div></li>
-								<li><div>Test</div></li>
-								<li><div>Test</div></li>
-								<li><div>Test</div></li>
-							</ul>
-						</div>
-						<div class="chatInput">
-							<button class="chatSend" type="button" value="Send"><i class="fa fa-list"></i></button>
-							<input type="text" />
-							<button class="chatSend" type="button" value="Send"><i class="fa fa-arrow-up"></i></button>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-			</div>	
-		</div>
+		<div data-ng-view></div>
 		<footer class="footer">
 			<section class="links">
 				<div class="grid">

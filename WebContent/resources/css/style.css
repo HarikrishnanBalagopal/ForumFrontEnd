@@ -203,3 +203,136 @@ section.links
 	background: transparent;
     padding: 0 100px;
 }
+
+/*Forum Styles*/
+.forumHeader
+{
+    padding: 40px 0;
+}
+.forumLogo
+{
+	vertical-align: bottom;
+}
+.forumHeading
+{
+	display: inline;
+	padding-left: 8px;
+	color: white;
+	font-family: sans-serif;
+    font-weight: 700;
+}
+.forumSearchWrapper
+{
+	display: inline-block;
+	background: black;
+	padding: 1px;
+}
+.forumSearch
+{
+	width: 198px;
+	height: 36px;
+	background: rgba(0, 0, 0, 0);
+	padding: 0 0 0 10px;
+	border: 1px solid #222222;
+	font-size: 20px;
+	color: white;
+}
+.forumSearch:hover
+{
+	border-color: rgba(248,183,0,0.44);
+}
+.forumSearch:focus
+{
+	border-color: #f8b700;
+}
+.newTopicBtn
+{
+	width: 148px;
+	height: 38px;
+	background-color: rgba(159,22,0,.6);
+    border: 1px solid #ea3012;
+    color: #f8b700;
+	font-size: 17px;
+}
+.newTopicBtn:hover
+{
+    background-color: #9f1600;
+    color: #fff;
+}
+.newTopicBtnIcon
+{
+	padding: 4px;
+}
+.forumTopic
+{
+	display: block;
+	background: rgba(255,255,255,.05);
+	color: white;
+	font-size: 16px;
+	border-bottom: 1px solid rgba(255,255,255, 0.2);
+	height: 64px;
+	line-height: 64px;
+	cursor: pointer;
+}
+.forumTopic:hover, .forumTopics:focus
+{
+	background: rgba(255,255,255,.1);
+	color: white;
+	text-decoration: none;
+}
+.topicIcon
+{
+	padding: 24px;
+	color: #f8b700;
+}
+.topicTitle
+{
+	
+}
+.topicCommentsIcon
+{
+	padding: 10px;
+	color: white;
+}
+.topicComments
+{
+	display: inline-block;
+    width: 120px;
+    color: rgba(255,255,255,.7);
+}
+.topicCreator
+{
+	display: inline-block;
+    width: 200px;
+	color: #f8b700;
+}
+.topicTimeStamp
+{
+    display: inline-block;
+    width: 100px;
+    padding: 0 16px 0 0;
+    text-align: right;
+    color: rgba(255,255,255,.7);
+}
+.topicPages
+{
+	text-align: center;
+    font-size: 24px;
+    padding: 32px 0;
+}
+.pageNumber, .topicsListPrev, .topicsListNext
+{
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 16px;
+    font-family: monospace;
+    color: #f8b700;
+    border: 1px solid #f8b700;
+    margin: 2px;
+	cursor: pointer;
+}
+.pageNumber:hover, .topicsListPrev:hover, .topicsListNext:hover
+{
+    background: rgba(248, 183, 0, 0.8);
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="forumHeader row">
+		<div class="col-xs-6">
+			<img class="forumLogo" src="resources/images/forumIcon.svg"
+				width="40" height="40" />
+			<h1 class="forumHeading">General Discussion</h1>
+		</div>
+		<div class="col-xs-6">
+			<div class="pull-right">
+				<div class="forumSearchWrapper">
+					<input data-ng-model="topicSearch" class="forumSearch" type="text"
+						autofocus="autofocus" placeholder="Search..." />
+				</div>
+				<button type="button" class="newTopicBtn">
+					<i class="newTopicBtnIcon fa fa-plus"></i>NEW TOPIC
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="forumContent">
+		<a class="forumTopic" data-ng-repeat="topic in pages[currPage].topicsList | filter: topicSearch">
+			<i class="topicIcon fa fa-file-o"></i><span class="topicTitle">{{topic.title}}</span>
+			<span class="pull-right">
+				<span class="topicComments"><i class="topicCommentsIcon fa fa-comment"></i>{{topic.totalComments}}</span>
+				<span class="topicCreator">{{topic.username}}</span>
+				<span class="topicTimeStamp">{{topic.diff < (4 * 24 * 3600 * 1000) ? topic.diffStr : topic.lastComment}}</span>
+			</span>
+		</a>
+		<div class="topicPages">
+			<a data-ng-click="prevPage()" class="topicsListPrev"><i class="fa fa-arrow-left"></i></a>
+			<a data-ng-repeat="page in pages" data-ng-click="changePage(page.id)" class="pageNumber">{{page.id + 1}}</a>
+			<a data-ng-click="nextPage()" class="topicsListNext"><i class="fa fa-arrow-right"></i></a>
+		</div>
+	</div>
+</div>
