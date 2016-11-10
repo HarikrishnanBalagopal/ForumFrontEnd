@@ -1,0 +1,15 @@
+<div class="loginWrapper">
+	<div class="loginPanel custPanel panel panel-default">
+		<div class="panel-heading">
+			<h3 class="loginHeader panel-title">Login</h3>
+		</div>
+		<div class="loginBody panel-body">
+			<form>
+				<div class="formInput"><input data-ng-model="username" required="required" autofocus="autofocus" type="text" placeholder="Username" name="username" /></div>
+				<div class="formInput"><input data-ng-model="password" required="required" type="password" placeholder="Password" name="password" /></div>
+				<div class="formInput"><input data-ng-click="login()" class="loginSubmit" type="submit" value="Login"/></div>
+				<div class="loginError" data-ng-show="showError">{{error}}</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,1 @@
+var mainView = angular.module("main", []);

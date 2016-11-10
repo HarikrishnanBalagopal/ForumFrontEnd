@@ -73,13 +73,13 @@
 			<h4>Latest Topics</h4>
 			<div class="custWell topicsWrapper">
 				<ul class="topicsList unstyledList">
-					<li>Test</li>
-					<li>Test</li>
-					<li>Test</li>
-					<li>Test</li>
-					<li>Test</li>
-					<li>Test</li>
-					<li>Test</li>
+					<li data-ng-repeat="topic in topicsList"><a class="forumTopic">
+						<i class="topicIcon fa fa-file-o"></i><span class="mainView topicTitle">{{topic.title}}</span>
+						<span class="pull-right">
+							<span class="mainView topicComments"><i class="mainView topicCommentsIcon fa fa-comment"></i>{{topic.totalComments}}</span>
+							<span class="mainView topicCreator">{{topic.username}}</span>
+						</span>
+					</a></li>
 				</ul>
 			</div>
 		</div>

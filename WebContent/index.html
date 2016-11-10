@@ -17,13 +17,15 @@
 	<script type="text/javascript" src="https://use.fontawesome.com/20c7f48529.js"></script>
 	
 	<script type="text/javascript" src="app.js"></script>
-	<script type="text/javascript" src="main-view/main-view_module.js"></script>
-	<script type="text/javascript" src="main-view/main-view_directive.js"></script>
+	<script type="text/javascript" src="main/main_module.js"></script>
+	<script type="text/javascript" src="main/main-view_directive.js"></script>
+	<script type="text/javascript" src="login/login_module.js"></script>
+	<script type="text/javascript" src="login/login-view_directive.js"></script>
 	<script type="text/javascript" src="forum/forum_module.js"></script>
 	<script type="text/javascript" src="forum/forum-list_directive.js"></script>
 	<title>Cobalt: Forums</title>
 </head>
-<body data-ng-app="forumApp">
+<body data-ng-app="forumApp" data-ng-controller="mainController">
 	<div class="mainContainer">
 		<div class="topBar">
 			<nav class="navbar navbar-default">
@@ -48,7 +50,8 @@
 							<li><a class="navBarBtn" href="#!Forum">Forum</a></li>
 							<li><a class="navBarBtn" href="#">Blog</a></li>
 							<li><a class="navBarBtn" href="#">Listing</a></li>
-							<li><a class="navBarBtn" id="idxLoginBtn" href="#">Login</a></li>
+							<li><a class="navBarBtn" id="idxLoginBtn" data-ng-show="!data.isLoggedIn" href="#!Login">Login</a></li>
+							<li><a class="navBarBtn" id="idxAccountBtn" data-ng-show="data.isLoggedIn" data-ng-click="logout()" href="#">Welcome {{data.user.username}}, Logout</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
