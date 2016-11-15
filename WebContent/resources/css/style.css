@@ -261,7 +261,7 @@ section.links
 {
 	border-color: #f8b700;
 }
-.newTopicBtn
+.newTopicBtn, .replyBtn, .replyLoginBtn, .newCommentReplyBtn
 {
 	width: 148px;
 	height: 38px;
@@ -270,12 +270,28 @@ section.links
     color: #f8b700;
 	font-size: 17px;
 }
-.newTopicBtn:hover
+button.pull-right.replyBtn
+{
+    width: 108px;
+}
+.replyLoginBtn
+{
+	width: 84px;
+}
+.newCommentReplyBtnWrapper
+{
+	padding: 16px 0;
+}
+.newCommentReplyBtn
+{
+    width: 108px;
+}
+.newTopicBtn:hover, .replyBtn:hover, .replyLoginBtn:hover, .newCommentReplyBtn:hover
 {
     background-color: #9f1600;
     color: #fff;
 }
-.newTopicBtnIcon
+.newTopicBtnIcon, .replyBtnIcon
 {
 	padding: 4px;
 }
@@ -353,6 +369,81 @@ section.links
     text-decoration: none;
 }
 
+/*Forum Thread Styles*/
+
+.threadContent
+{
+	
+}
+.threadPages
+{
+	height: 64px;
+    padding: 0;
+}
+.userDetails
+{
+	
+}
+.threadComment
+{
+	padding: 16px 0 32px 0;
+    border-top: 1px solid grey;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    font-size: 18px;
+    line-height: 1.5;
+}
+.commentTime
+{
+	color: grey;
+}
+.commentContent
+{
+    padding: 16px 0;
+	color: lightgrey;
+}
+.threadPagesBottom
+{
+	padding: 44px 0;
+	text-align: center;
+}
+.joinTheConversation
+{
+    padding: 10px 100px 48px 104px;
+    background: #2b221b;
+    border-top: 1px solid #413933;
+    color: white;
+}
+.conversationHeader
+{
+	font-size: 32px;
+    padding: 16px 2px;
+    font-weight: 700;
+}
+.newCommentLogin
+{
+	padding: 44px 0;
+    text-align: center;
+    border: 2px solid #6b6560;
+    border-radius: 4px;
+    color: #bdbbb8;
+    font-size: 18px;
+}
+.newCommentContent
+{
+	padding: 16px;
+    color: #bdbbb8;
+    font-size: 18px;
+    background: rgba(0, 0, 0, 0.4);
+}
+.replyLoginBtnWrapper
+{
+	padding: 24px;
+}
+.newComment
+{
+    padding: 0 0 0 0px;
+}
 /*Login Styles*/
 .loginWrapper
 {

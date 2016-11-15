@@ -1,0 +1,77 @@
+<div class="container">
+	<div class="forumHeader row">
+		<div class="col-xs-9">
+			<img class="forumLogo" src="resources/images/forumIcon.svg"
+				width="40" height="40" />
+			<h1 class="forumHeading">{{thread.title}}</h1>
+		</div>
+		<div class="col-xs-3">
+			<button data-ng-click="gotoReply()" class="pull-right replyBtn" type="button">
+				<i class="replyBtnIcon fa fa-arrow-down"></i>REPLY
+			</button>
+		</div>
+	</div>
+	<div class="threadContent">
+		<div class="col-xs-12 threadPages">
+			<a data-ng-click="prevPage()" class="topicsListPrev"><i class="fa fa-arrow-left"></i></a>
+			<a data-ng-repeat="page in pages" data-ng-click="changePage(page.id)" class="pageNumber">{{page.id + 1}}</a>
+			<a data-ng-click="nextPage()" class="topicsListNext"><i class="fa fa-arrow-right"></i></a>
+		</div>
+		<div class="col-xs-12 threadComment" data-ng-show="currPage == 0">
+			<div class="col-xs-3 userDetails media">
+				<div class="media-left"><img src="resources/images/userIcon.svg" width="64" height="64" /></div>
+				<div class="media-body">
+    				<h4 class="media-heading">{{threadUsers.get(thread.userID).username}}</h4>
+    				...
+  				</div>
+			</div>
+			<div class="col-xs-9">
+				<div class="commentTime">{{thread.createdOn | date: "MMM d"}}</div>
+				<div class="commentContent">{{thread.content}}</div>
+			</div>
+		</div>
+		<div class="col-xs-12 threadComment" data-ng-repeat="comment in pages[currPage].commentsList">
+			<div class="col-xs-3 userDetails media">
+				<div class="media-left"><img src="resources/images/userIcon.svg" width="64" height="64" /></div>
+				<div class="media-body">
+    				<h4 class="media-heading">{{threadUsers.get(comment.userID).username}}</h4>
+    				...
+  				</div>
+			</div>
+			<div class="col-xs-9">
+				<div class="commentTime">{{comment.createdOn | date: "MMM d"}}</div>
+				<div class="commentContent">{{comment.content}}</div>
+			</div>
+		</div>
+		<div class="col-xs-12 threadPagesBottom">
+			<a data-ng-click="prevPage()" class="topicsListPrev"><i class="fa fa-arrow-left"></i></a>
+			<a data-ng-repeat="page in pages" data-ng-click="changePage(page.id)" class="pageNumber">{{page.id + 1}}</a>
+			<a data-ng-click="nextPage()" class="topicsListNext"><i class="fa fa-arrow-right"></i></a>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12 joinTheConversation">
+	<h1 class="conversationHeader">Join the Conversation</h1>
+	<div class="col-xs-12 newComment">
+		<div class="col-xs-3 userDetails media">
+			<div class="media-left"><img src="resources/images/userIcon.svg" width="64" height="64" /></div>
+			<div class="media-body">
+    			<h4 class="media-heading">{{commonData.user.username}}</h4>
+    			...
+  			</div>
+		</div>
+		<div id="reply" class="col-xs-9">
+			<div data-ng-show="!commonData.isLoggedIn" class="newCommentLogin">
+				Have something to say? Log in to join the conversation.
+				<div class="replyLoginBtnWrapper"><button class="replyLoginBtn" data-ng-click="go('/Login');" type="button">LOGIN</button></div>
+			</div>
+			<div data-ng-show="commonData.isLoggedIn">
+				<textarea class="col-xs-12 newCommentContent" data-ng-model="content" rows="8" cols="64"></textarea>
+				<div class="col-xs-12 newCommentReplyBtnWrapper">
+					<button class="newCommentReplyBtn" data-ng-click="reply()" type="button"><i class="replyBtnIcon fa fa-arrow-down"></i>REPLY</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

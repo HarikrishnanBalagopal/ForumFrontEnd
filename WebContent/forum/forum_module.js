@@ -1,1 +1,1 @@
-var forum = angular.module("forum", []);
+var forum = angular.module("forum", ["services"]);

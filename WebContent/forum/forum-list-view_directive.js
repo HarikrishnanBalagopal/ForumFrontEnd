@@ -1,26 +1,27 @@
-angular.module("forum").directive("forumList", function(){
+angular.module("forum").directive("forumListView", function(){
 	return {
 	    restrict: 'A',
 	    scope: {},
-	    controller: ["$scope", "$http", "$filter", function forumCtrl($scope, $http, $filter){
-	    	$http.get("http://localhost:8081/ForumBackEnd/Forum").then(function(response){
-	    		$scope.dateCust = new Date();
-	    		$scope.pages = [];
-	    		$scope.currPage = 0;
-	    		$scope.changePage = function(newPage)
-	    		{
-	    			$scope.currPage = newPage;
-	    		}
-	    		$scope.nextPage = function()
-	    		{
-	    			if($scope.currPage < ($scope.pages.length - 1))
-	    				$scope.currPage++;
-	    		}
-	    		$scope.prevPage = function()
-	    		{
-	    			if($scope.currPage > 0)
-	    				$scope.currPage--;
-	    		}
+	    controller: ["$scope", "forum", "$filter", function forumCtrl($scope, forum, $filter){
+	    	$scope.dateCust = new Date();
+    		$scope.pages = [];
+    		$scope.currPage = 0;
+    		$scope.changePage = function(newPage)
+    		{
+    			$scope.currPage = newPage;
+    		}
+    		$scope.nextPage = function()
+    		{
+    			if($scope.currPage < ($scope.pages.length - 1))
+    				$scope.currPage++;
+    		}
+    		$scope.prevPage = function()
+    		{
+    			if($scope.currPage > 0)
+    				$scope.currPage--;
+    		}
+    		
+	    	forum.getAll().then(function(data){	
 	    		var msToD = function(d)
 	    		{
 	    			var days = Math.floor(d/(24 * 3600 * 1000));
@@ -38,7 +39,6 @@ angular.module("forum").directive("forumList", function(){
 	    			var seconds = Math.floor(d/1000);
 	    			return seconds + "s";
 	    		}
-	    		var data = response.data;
 				$scope.pages.push({id: 0, topicsList: []});
 	    		for(var i = 0, n = 0, p = 0; i < data.length; i++, n++)
 	    		{
@@ -59,6 +59,6 @@ angular.module("forum").directive("forumList", function(){
 	    		}
 	    	});
 	    }],
-	    templateUrl: 'forum/forum-list_template.html'
+	    templateUrl: 'forum/forum-list-view_template.html'
 	};
 });

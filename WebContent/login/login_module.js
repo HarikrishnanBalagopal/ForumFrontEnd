@@ -1,1 +1,1 @@
-var login = angular.module("login", []);
+var login = angular.module("login", ["services"]);

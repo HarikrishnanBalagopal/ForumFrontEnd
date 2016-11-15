@@ -1,1 +1,1 @@
-var mainView = angular.module("main", []);
+var mainView = angular.module("main", ["services"]);
