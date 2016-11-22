@@ -1,0 +1,44 @@
+<div class="custPanel registerPanel loginPanel panel panel-default container">
+	<div class="panel-heading">
+		<h3 class="loginHeader panel-title">Register</h3>
+	</div>
+	<div class="registerBody loginBody panel-body">
+		<form name="registerForm" class="row">
+			<div class="formInput form-group col-xs-6">
+				<label class="custLabel" for="username">username</label><br /> <input data-ng-model="newUser.username" data-ng-keyup="checkUsername()" class="formRegister" id="username" name="username" type="text" autofocus="autofocus" required="required" /> <br />{{checkUser}}
+			</div>
+			<div class="formInput form-group col-xs-6">
+				<label class="custLabel" for="email">email</label><br /> <input data-ng-model="newUser.email" class="formRegister" id="email" placeholder="example@server.com" name="email" type="email" required="required" />
+			</div>
+			<div class="clearfix"></div>
+			<div class="formInput form-group col-xs-6">
+				<label class="custLabel" for="password">password</label><br /> <input data-ng-model="newUser.password" data-ng-model-options="{allowInvalid: true}" data-ng-keyup="regexValid()" class="formRegister" id="password" name="password" type="password"
+					placeholder="(atleast 8 characters and must include letters and numbers)" title="Password must be atleast 8 characters and must include letters and numbers" pattern="^(?=[^a-z]*[a-z])(?=[^\d]*\d).{8,}$" required="required" /> <br />{{regexCheck}}
+			</div>
+			<div class="formInput form-group col-xs-6">
+				<label class="custLabel" for="confirmPassword">confirm password</label><br /> <input data-ng-model="confirmPassword" class="formRegister" id="confirmPassword" name="confirmPassword" type="password"
+					placeholder="(atleast 8 characters and must include letters and numbers)" title="Password must be atleast 8 characters and must include letters and numbers" pattern="^(?=[^a-z]*[a-z])(?=[^\d]*\d).{8,}$" required="required" /> <br />
+				<i class="fa {{newUser.password == confirmPassword ? 'fa-check' : 'fa-times'}}"></i>
+			</div>
+			<div class="formInput form-group col-xs-6">
+				<label class="custLabel" for="address">address</label><br /> <input data-ng-model="newUser.address" class="formRegister" id="address" name="address" type="text" />
+			</div>
+			<div class="formInput form-group col-xs-6">
+				<label class="custLabel" for="contactNo">contact no</label><br /> <input data-ng-model="newUser.contactNo" class="formRegister" id="contactNo" name="contactNo" type="text" />
+			</div>
+			<fieldset class="col-xs-12 form-group">
+				<legend class="custLabel">Status</legend>
+				<div class="radio-inline">
+					<label><input data-ng-model="newUser.role" type="radio" name="optStatus" value="S">Student</label>
+				</div>
+				<div class="radio-inline">
+					<label><input data-ng-model="newUser.role" type="radio" name="optStatus" value="P">Alumni</label>
+				</div>
+			</fieldset>
+			<div class="formInput">
+				<input data-ng-click="register()" class="loginSubmit" type="submit" value="Register" />
+			</div>
+			<div class="loginError" data-ng-show="showError">{{error}}</div>
+		</form>
+	</div>
+</div>

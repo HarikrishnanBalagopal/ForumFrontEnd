@@ -1,13 +1,15 @@
-var app = angular.module("forumApp", ["ngRoute", "main", "login", "forum", "services"]);
+var app = angular.module("forumApp", ["ngRoute", "main", "login", "register", "profile", "forum", "services"]);
 app.config(['$locationProvider', '$routeProvider',
             function config($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
     $routeProvider.
       when("/Home", {template: "<div data-main-view data-common-data=\"data\"></div>"}).
-      when("/Forum", {template: "<div data-forum-list-view></div>"}).
+      when("/Forum", {template: "<div data-forum-list-view data-common-data=\"data\"></div>"}).
       when("/Forum/:threadID", {template: "<div data-forum-thread-view data-common-data=\"data\"></div>"}).
       when("/Login", {template: "<div data-login-view data-common-data=\"data\"></div>"}).
+      when("/Register", {template: "<div data-register-view data-common-data=\"data\"></div>"}).
+      when("/Account", {template: "<div data-profile-view data-common-data=\"data\"></div>"}).
       otherwise('/Home');
   }
 ]);

@@ -5,7 +5,7 @@
 		laoreet neque mattis rhoncus. Donec ultrices metus vehicula convallis
 		rhoncus.</p>
 	<p>
-		<a class="mainTitleBtn btn btn-primary btn-lg" href="#" role="button">Sign
+		<a class="mainTitleBtn btn btn-primary btn-lg" href="#!Register" role="button">Sign
 			Up</a>
 	</p>
 </div>
@@ -73,7 +73,7 @@
 			<h4>Latest Topics</h4>
 			<div class="custWell topicsWrapper">
 				<ul class="topicsList unstyledList">
-					<li data-ng-repeat="topic in topicsList"><a class="forumTopic">
+					<li data-ng-repeat="topic in topicsList"><a class="forumTopic" data-ng-href="#!Forum/{{topic.id}}">
 						<i class="topicIcon fa fa-file-o"></i><span class="mainView topicTitle">{{topic.title}}</span>
 						<span class="pull-right">
 							<span class="mainView topicComments"><i class="mainView topicCommentsIcon fa fa-comment"></i>{{topic.totalComments}}</span>

@@ -22,6 +22,19 @@ angular.module("services").factory("forum", ["$http", function($http){
 		{
 			return $http.get(baseURL + "/ForumComments/" + id).then(success, error);
 		},
+		createThread: function(title, content)
+		{
+			return $http({
+    		    method: 'POST',
+    		    url: baseURL + "/CreateThread",
+    		    headers: {'Content-Type': 'application/json'},
+    		    transformResponse: function(data)
+    		    {
+    		    	return data;
+    		    },
+    		    data: {title: title, content: content}
+    		}).then(success, error);
+		},
 		createComment: function(threadID, content)
 		{
 			return $http.post(baseURL + "/CreateComment/", {threadID: threadID, content: content}).then(success, error);

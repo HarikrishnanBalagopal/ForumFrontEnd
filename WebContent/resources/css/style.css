@@ -34,16 +34,36 @@ nav.navbar.navbar-default a
 {
     padding: 20px 40px 0 0;
 }
-#idxLoginBtn
+#idxLoginBtn, #idxAccountBtn
 {
     margin: 14px 10px 0 -8px;
     padding: 4px 10px 4px 10px;
 	border: 2px solid white;
 	border-radius: 4px;
 }
-#idxLoginBtn:hover
+#idxAccountBtn
 {
+	background: rgba(0, 0, 0, 0);
+    font-family: sans-serif;
+    font-weight: 700;
+    color: white;
+}
+#idxLoginBtn:hover, #idxAccountBtn:hover
+{
+	color: black;
 	border: 2px solid black;
+}
+.accountMenu
+{
+	min-width: 120px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid white;
+    margin: 4px 10px 0 0;
+}
+.accountMenu li a:hover
+{
+	background: transparent;
+	color: black;
 }
 .mainContainer
 {
@@ -399,8 +419,11 @@ button.pull-right.replyBtn
 }
 .commentContent
 {
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    font-size: 18px;
     padding: 16px 0;
-	color: lightgrey;
+    color: lightgrey;
 }
 .threadPagesBottom
 {
@@ -413,6 +436,16 @@ button.pull-right.replyBtn
     background: #2b221b;
     border-top: 1px solid #413933;
     color: white;
+}
+.createTopicTitle
+{
+    background: rgba(0,0,0,0.4);
+    margin: 0 0 16px 0;
+    padding: 16px;
+    font-size: 18px;
+    color: #bdbbb8;
+    border: 1px solid;
+    width: 695px;
 }
 .conversationHeader
 {
@@ -503,4 +536,24 @@ input.loginSubmit
     text-transform: uppercase;
     font-weight: 800;
     font-family: monospace;
+}
+
+/*Register Styles*/
+.registerPanel
+{
+	padding: 0;
+}
+.formRegister
+{
+	
+}
+.registerBody
+{
+	color: white;
+}
+.custLabel
+{
+	color: white;
+	font-size: 12px;
+	text-transform: uppercase;
 }

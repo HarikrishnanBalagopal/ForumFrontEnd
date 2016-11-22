@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="row">
+		<div class="mainContent custPanel panel panel-default">
+			<div class="panel-heading">
+				<h3 class="loginHeader panel-title">User Profile</h3>
+			</div>
+			<div class="panel-body">
+				<div class="col-xs-3 userDetails media">
+					<div class="media-left">
+						<img src="resources/images/userIcon.svg" width="64" height="64" />
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Profile Picture</h4>
+						<button type="button">Change Picture</button>
+					</div>
+				</div>
+				<div class="col-xs-9">
+					Username: {{commonData.user.username}} <br />
+					Email: {{commonData.user.email}} <br />
+					Status: {{commonData.user.role == 'S' ? "Student" : "Alumni"}} <br />
+					Address: {{commonData.user.address}} <br />
+					Contact No: {{commonData.user.contactNo}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -2,7 +2,7 @@ angular.module("forum").directive("forumThreadView", function(){
 	return {
 	    restrict: 'A',
 	    scope: {commonData: "="},
-	    controller: ["$scope", "forum", "user", "$location", "$routeParams", function forumCtrl($scope, forum, user, $location, $routeParams, $filter){
+	    controller: ["$scope", "forum", "user", "$location", "$routeParams", "$anchorScroll", function forumCtrl($scope, forum, user, $location, $routeParams, $anchorScroll){
 	    	$scope.currPage = 0;
 	    	$scope.go = function(path){$location.path(path);};
 	    	$scope.gotoReply = function(){$location.hash('reply'); $anchorScroll();};
@@ -56,6 +56,6 @@ angular.module("forum").directive("forumThreadView", function(){
 	    	
 	    	$scope.refresh();
 	    }],
-	    templateUrl: 'forum/forum-thread-view_template.html'
+	    templateUrl: "forum/forum-thread-view_template.html"
 	};
 });

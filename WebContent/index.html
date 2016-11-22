@@ -21,6 +21,10 @@
 	<script type="text/javascript" src="main/main-view_directive.js"></script>
 	<script type="text/javascript" src="login/login_module.js"></script>
 	<script type="text/javascript" src="login/login-view_directive.js"></script>
+	<script type="text/javascript" src="register/register_module.js"></script>
+	<script type="text/javascript" src="register/register-view_directive.js"></script>
+	<script type="text/javascript" src="profile/profile_module.js"></script>
+	<script type="text/javascript" src="profile/profile-view_directive.js"></script>
 	<script type="text/javascript" src="forum/forum_module.js"></script>
 	<script type="text/javascript" src="forum/forum-list-view_directive.js"></script>
 	<script type="text/javascript" src="forum/forum-thread-view_directive.js"></script>
@@ -55,7 +59,16 @@
 							<li><a class="navBarBtn" href="#">Blog</a></li>
 							<li><a class="navBarBtn" href="#">Listing</a></li>
 							<li><a class="navBarBtn" id="idxLoginBtn" data-ng-show="!data.isLoggedIn" href="#!Login">Login</a></li>
-							<li><a class="navBarBtn" id="idxAccountBtn" data-ng-show="data.isLoggedIn" data-ng-click="logout()" href="#">Welcome {{data.user.username}}, Logout</a></li>
+							<li><div data-ng-show="data.isLoggedIn" class="dropdown">
+								<button id="idxAccountBtn" class="navBarBtn btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    								Welcome {{data.user.username}}<span class="caret"></span>
+  								</button>
+  								<ul class="accountMenu dropdown-menu" aria-labelledby="dropdownMenu1">
+    								<li><a href="#!Account">User Profile</a></li>
+							    	<li role="separator" class="divider"></li>
+							    	<li><a data-ng-click="logout()" href="#">Log out</a></li>
+							  	</ul>
+							</div></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->

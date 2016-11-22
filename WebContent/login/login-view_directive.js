@@ -28,7 +28,8 @@ angular.module("login").directive("loginView", ["$location", function($location)
 	    			else
 	    			{
 	    				$scope.showError = true;
-	    				$scope.error = data;
+	    				if(data.error) $scope.error = data.error;
+	    				else $scope.error = data;
 	    			}
 	    		});
 	    	}

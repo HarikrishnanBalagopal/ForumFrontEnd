@@ -1,0 +1,1 @@
+var register = angular.module("register", ["services"]);
