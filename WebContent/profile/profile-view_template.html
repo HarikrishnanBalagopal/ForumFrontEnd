@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="mainContent custPanel panel panel-default">
 			<div class="panel-heading">
-				<h3 class="loginHeader panel-title">User Profile</h3>
+				<h3 class="loginHeader panel-title">{{commonData.isAdmin ? "Admin Home" : "User Profile"}}</h3>
 			</div>
 			<div class="panel-body">
 				<div class="col-xs-3 userDetails media">
@@ -11,15 +11,54 @@
 					</div>
 					<div class="media-body">
 						<h4 class="media-heading">Profile Picture</h4>
-						<button type="button">Change Picture</button>
+						<button class="changePictureBtn" type="button">Change Picture</button>
 					</div>
 				</div>
 				<div class="col-xs-9">
-					Username: {{commonData.user.username}} <br />
-					Email: {{commonData.user.email}} <br />
-					Status: {{commonData.user.role == 'S' ? "Student" : "Alumni"}} <br />
-					Address: {{commonData.user.address}} <br />
+					Username: {{commonData.user.username}} <br /> Email: {{commonData.user.email}} <br /> Status: {{commonData.user.role == 'S' ? "Student" : (commonData.user.role == 'A' ? "Admin" : "Alumni")}} <br /> Address: {{commonData.user.address}} <br />
 					Contact No: {{commonData.user.contactNo}}
+				</div>
+				<div class="col-xs-12" data-ng-show="commonData.isAdmin">
+					<hr class="col-xs-12" />
+					<div class="col-xs-12 adminControls">
+						<div class="forumSearchWrapper">
+							<input data-ng-model="userSearch" class="forumSearch" type="text" autofocus="autofocus" placeholder="Search..." />
+						</div>
+						<div class="pull-right">
+							Sort by:
+							<select class="sortDropdown" data-ng-model="sortOrder">
+								<option value="username">Username</option>
+								<option value="email">Email</option>
+								<option value="role">Role</option>
+								<option value="status">Status</option>								
+							</select>
+						</div>
+					</div>
+					<hr class="col-xs-12" />
+					<table class="col-xs-12 table table-striped">
+						<thead>
+							<tr>
+								<th>Username</th>
+								<th>Email</th>
+								<th>Role</th>
+								<th>Status</th>
+								<th>Reason</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="user in users | filter : userSearch | orderBy : sortOrder">
+								<td>{{user.username}}</td>
+								<td>{{user.email}}</td>
+								<td>{{user.role == 'S' ? "Student" : (user.role == 'A' ? "Admin" : "Alumni")}}</td>
+								<td>
+									<div class="checkbox">
+										<label><input data-ng-model="user.currStatus" data-ng-click="toggleStatus(user)" type="checkbox" checked data-toggle="toggle">{{user.status == 'Y' ? "Approved" : (user.status == 'N' ? "New" : "Rejected")}}</label>
+									</div>
+								</td>
+								<td>{{user.reason}}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

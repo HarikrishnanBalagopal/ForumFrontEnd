@@ -37,7 +37,7 @@ angular.module("services").factory("forum", ["$http", function($http){
 		},
 		createComment: function(threadID, content)
 		{
-			return $http.post(baseURL + "/CreateComment/", {threadID: threadID, content: content}).then(success, error);
+			return $http.post(baseURL + "/CreateForumComment/", {threadID: threadID, content: content}).then(success, error);
 		}
 	};
 }]);

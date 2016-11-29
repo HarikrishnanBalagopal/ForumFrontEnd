@@ -557,3 +557,19 @@ input.loginSubmit
 	font-size: 12px;
 	text-transform: uppercase;
 }
+
+/*User Profile Styles*/
+.sortDropdown
+{
+    font-size: 16px;
+    padding: 8px;
+}
+.changePictureBtn
+{
+    height: 40px;
+    padding: 4px;
+    background: rgba(0,0,0,0.1);
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 16px;
+}

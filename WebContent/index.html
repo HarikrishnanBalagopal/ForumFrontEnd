@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="icon" href="resources/images/favicon.ico">
+<link rel="icon" href="resources/images/favicon.ico">
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="resources/css/style.css">
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="https://use.fontawesome.com/20c7f48529.js"></script>
-	
-	<script type="text/javascript" src="app.js"></script>
-	<script type="text/javascript" src="main/main_module.js"></script>
-	<script type="text/javascript" src="main/main-view_directive.js"></script>
-	<script type="text/javascript" src="login/login_module.js"></script>
-	<script type="text/javascript" src="login/login-view_directive.js"></script>
-	<script type="text/javascript" src="register/register_module.js"></script>
-	<script type="text/javascript" src="register/register-view_directive.js"></script>
-	<script type="text/javascript" src="profile/profile_module.js"></script>
-	<script type="text/javascript" src="profile/profile-view_directive.js"></script>
-	<script type="text/javascript" src="forum/forum_module.js"></script>
-	<script type="text/javascript" src="forum/forum-list-view_directive.js"></script>
-	<script type="text/javascript" src="forum/forum-thread-view_directive.js"></script>
-	<script type="text/javascript" src="core/services/services_module.js"></script>
-	<script type="text/javascript" src="core/services/user_service.js"></script>
-	<script type="text/javascript" src="core/services/forum_service.js"></script>
-	<title>Cobalt: Forums</title>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://use.fontawesome.com/20c7f48529.js"></script>
+
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="main/main_module.js"></script>
+<script type="text/javascript" src="main/main-view_directive.js"></script>
+<script type="text/javascript" src="login/login_module.js"></script>
+<script type="text/javascript" src="login/login-view_directive.js"></script>
+<script type="text/javascript" src="register/register_module.js"></script>
+<script type="text/javascript" src="register/register-view_directive.js"></script>
+<script type="text/javascript" src="profile/profile_module.js"></script>
+<script type="text/javascript" src="profile/profile-view_directive.js"></script>
+<script type="text/javascript" src="forum/forum_module.js"></script>
+<script type="text/javascript" src="forum/forum-list-view_directive.js"></script>
+<script type="text/javascript" src="forum/forum-thread-view_directive.js"></script>
+<script type="text/javascript" src="core/services/services_module.js"></script>
+<script type="text/javascript" src="core/services/user_service.js"></script>
+<script type="text/javascript" src="core/services/forum_service.js"></script>
+<title>Cobalt: Forums</title>
 </head>
 <body data-ng-app="forumApp" data-ng-controller="mainController">
 	<div class="mainContainer">
@@ -41,14 +41,9 @@
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
+							<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 						</button>
-						<a id="logoText" class="navbar-brand" href="#!Home">
-							<img id="logo" src="http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png"/>
-							<span>Cobalt</span>
+						<a id="logoText" class="navbar-brand" href="#!Home"> <img id="logo" src="http://design.ubuntu.com/wp-content/uploads/ubuntu-logo32.png" /> <span>Cobalt</span>
 						</a>
 					</div>
 
@@ -60,18 +55,20 @@
 							<li><a class="navBarBtn" href="#">Listing</a></li>
 							<li><a class="navBarBtn" id="idxLoginBtn" data-ng-show="!data.isLoggedIn" href="#!Login">Login</a></li>
 							<li><div data-ng-show="data.isLoggedIn" class="dropdown">
-								<button id="idxAccountBtn" class="navBarBtn btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    								Welcome {{data.user.username}}<span class="caret"></span>
-  								</button>
-  								<ul class="accountMenu dropdown-menu" aria-labelledby="dropdownMenu1">
-    								<li><a href="#!Account">User Profile</a></li>
-							    	<li role="separator" class="divider"></li>
-							    	<li><a data-ng-click="logout()" href="#">Log out</a></li>
-							  	</ul>
-							</div></li>
+									<button id="idxAccountBtn" class="navBarBtn btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										Welcome {{data.user.username}}<span class="caret"></span>
+									</button>
+									<ul class="accountMenu dropdown-menu" aria-labelledby="dropdownMenu1">
+										<li><a href="#!Account">User Profile</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a data-ng-click="logout()" href="#">Log out</a></li>
+									</ul>
+								</div></li>
 						</ul>
-					</div><!-- /.navbar-collapse -->
-				</div><!-- /.container-fluid -->
+					</div>
+					<!-- /.navbar-collapse -->
+				</div>
+				<!-- /.container-fluid -->
 			</nav>
 		</div>
 		<div data-ng-view></div>

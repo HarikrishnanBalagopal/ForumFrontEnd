@@ -13,10 +13,8 @@ angular.module("login").directive("loginView", ["$location", function($location)
 	    				$scope.commonData.user = data;
 	    				$scope.commonData.isLoggedIn = true;
 	    				if(data.role == 'A')
-	    				{
 	    					$scope.commonData.isAdmin = true;
-	    					$location.path("/AdminHome");
-	    				}else $location.path("/Home");
+	    				$location.path("/Home");
 	    			});
 	    		}
 	    		

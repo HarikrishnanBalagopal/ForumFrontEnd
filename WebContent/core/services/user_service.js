@@ -52,9 +52,9 @@ angular.module("services").factory("user", ["$http", function($http){
 		{
 			return $http.get(baseURL + "/UserDetails/" + username).then(success, error);
 		},
-		getAll: function()
+		getAllAdmin: function()
 		{
-			return $http.get(baseURL + "/UserDetailsAll").then(success, error);
+			return $http.get(baseURL + "/UserDetailsAllAdmin").then(success, error);
 		},
 		login: function(username, password)
 		{
@@ -90,6 +90,36 @@ angular.module("services").factory("user", ["$http", function($http){
     		    	return data;
     		    },
     		    data: userDetails
+    		}).then(success, error);
+		},
+		approve: function(userID)
+		{
+			return $http({
+    		    method: 'POST',
+    		    url: baseURL + "/Approve",
+    		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    		    transformRequest: function(obj)
+    		    {
+    		        var str = [];
+    		        for(var p in obj)str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    		        return str.join("&");
+    		    },
+    		    data: {id: userID}
+    		}).then(success, error);
+		},
+		reject: function(userID, reason)
+		{
+			return $http({
+    		    method: 'POST',
+    		    url: baseURL + "/Reject",
+    		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    		    transformRequest: function(obj)
+    		    {
+    		        var str = [];
+    		        for(var p in obj)str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    		        return str.join("&");
+    		    },
+    		    data: {id: userID, reason: reason}
     		}).then(success, error);
 		}
 	};
