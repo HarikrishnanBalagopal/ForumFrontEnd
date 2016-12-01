@@ -41,6 +41,7 @@
 			<div class="col-xs-9">
 				<div class="commentTime">{{comment.createdOn | date: "MMM d"}}</div>
 				<pre class="commentContent">{{comment.content}}</pre>
+				<a data-ng-show="commonData.isAdmin" data-ng-click="deleteComment(comment.id)"><i class="fa fa-times"></i></a>
 			</div>
 		</div>
 		<div class="col-xs-12 threadPagesBottom">

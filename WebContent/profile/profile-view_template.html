@@ -24,29 +24,21 @@
 						<div class="forumSearchWrapper">
 							<input data-ng-model="userSearch" class="forumSearch" type="text" autofocus="autofocus" placeholder="Search..." />
 						</div>
-						<div class="pull-right">
-							Sort by:
-							<select class="sortDropdown" data-ng-model="sortOrder">
-								<option value="username">Username</option>
-								<option value="email">Email</option>
-								<option value="role">Role</option>
-								<option value="status">Status</option>								
-							</select>
-						</div>
 					</div>
 					<hr class="col-xs-12" />
 					<table class="col-xs-12 table table-striped">
 						<thead>
 							<tr>
-								<th>Username</th>
-								<th>Email</th>
-								<th>Role</th>
-								<th>Status</th>
-								<th>Reason</th>
+								<th><a data-ng-click="sortOrder = 'username'; sortReverse = !sortReverse;" class="cursorPointer">Username <i data-ng-show="sortOrder == 'username'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder = 'email'; sortReverse = !sortReverse;" class="cursorPointer">Email <i data-ng-show="sortOrder == 'email'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder = 'role'; sortReverse = !sortReverse;" class="cursorPointer">Role <i data-ng-show="sortOrder == 'role'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder = 'status'; sortReverse = !sortReverse;" class="cursorPointer">Status <i data-ng-show="sortOrder == 'status'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder = 'reason'; sortReverse = !sortReverse;" class="cursorPointer">Reason <i data-ng-show="sortOrder == 'reason'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder = 'onlineStatus'; sortReverse = !sortReverse;" class="cursorPointer">Online <i data-ng-show="sortOrder == 'onlineStatus'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="user in users | filter : userSearch | orderBy : sortOrder">
+							<tr data-ng-repeat="user in users | filter : userSearch | orderBy : sortOrder : sortReverse">
 								<td>{{user.username}}</td>
 								<td>{{user.email}}</td>
 								<td>{{user.role == 'S' ? "Student" : (user.role == 'A' ? "Admin" : "Alumni")}}</td>
@@ -56,6 +48,7 @@
 									</div>
 								</td>
 								<td>{{user.reason}}</td>
+								<td><i class="fa {{user.onlineStatus == 'Y' ? 'fa-check' : 'fa-times'}}" style="color: {{user.onlineStatus== 'Y'? 'green': 'red'}}"></i></td>
 							</tr>
 						</tbody>
 					</table>

@@ -7,25 +7,32 @@ angular.module("forum").directive("forumListView", function(){
 	    	$scope.createThread = function()
 	    	{
 	    		forum.createThread($scope.title, $scope.content).then(function(data){$scope.refresh();});
-	    	}
+	    	};
+	    	$scope.deleteThread = function(event, id)
+	    	{
+    			event.stopPropagation();
+    			event.preventDefault();
+	    		if(confirm("Confirm Delete Thread:" + id))
+	    			forum.deleteThreadAdmin(id).then(function(data){$scope.refresh();});
+	    	};
     		$scope.showNew = function()
     		{
     			$scope.showNewTopic = true;
-    		}
+    		};
     		$scope.changePage = function(newPage)
     		{
     			$scope.currPage = newPage;
-    		}
+    		};
     		$scope.nextPage = function()
     		{
     			if($scope.currPage < ($scope.pages.length - 1))
     				$scope.currPage++;
-    		}
+    		};
     		$scope.prevPage = function()
     		{
     			if($scope.currPage > 0)
     				$scope.currPage--;
-    		}
+    		};
 	    	$scope.refresh = function()
 	    	{
 		    	$scope.dateCust = new Date();

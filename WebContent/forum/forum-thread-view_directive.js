@@ -11,6 +11,11 @@ angular.module("forum").directive("forumThreadView", function(){
 	    		forum.createComment($routeParams.threadID, $scope.content).
 	    		then(function(data){$scope.refresh();});
 	    	};
+	    	$scope.deleteComment = function(id)
+	    	{
+	    		if(confirm("Confirm Delete Comment:" + id))
+	    			forum.deleteCommentAdmin(id).then(function(data){$scope.refresh();});
+	    	}
 	    	$scope.changePage = function(newPage)
     		{
     			$scope.currPage = newPage;
@@ -31,7 +36,9 @@ angular.module("forum").directive("forumThreadView", function(){
 	    		var asyncDetails = function(id){return function(data){userMap.set(id, data);};};
 	    		forum.getByID($routeParams.threadID).then(function(data){
 					$scope.thread = data;
-		    	});
+					userMap.set(data.userID, {requested: true});	
+					user.getByID(data.userID).then(asyncDetails(data.userID));
+				});
 				$scope.pages = [];
 	    		$scope.pages.push({id: 0, commentsList: []});
 	    		forum.getAllComments($routeParams.threadID).then(function(data){

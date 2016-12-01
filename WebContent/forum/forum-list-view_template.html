@@ -51,6 +51,7 @@
 		<a class="forumTopic" data-ng-repeat="topic in pages[currPage].topicsList | filter: topicSearch" data-ng-href="#!Forum/{{topic.id}}">
 			<i class="topicIcon fa fa-file-o"></i><span class="topicTitle">{{topic.title}}</span>
 			<span class="pull-right">
+				<span class="topicDelete" data-ng-click="deleteThread($event, topic.id);" data-ng-show="commonData.isAdmin"><i class="topicDeleteIcon fa fa-times"></i></span>
 				<span class="topicComments"><i class="topicCommentsIcon fa fa-comment"></i>{{topic.totalComments}}</span>
 				<span class="topicCreator">{{topic.username}}</span>
 				<span class="topicTimeStamp">{{topic.diff < (4 * 24 * 3600 * 1000) ? topic.diffStr : topic.lastComment}}</span>

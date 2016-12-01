@@ -35,9 +35,39 @@ angular.module("services").factory("forum", ["$http", function($http){
     		    data: {title: title, content: content}
     		}).then(success, error);
 		},
+		deleteThreadAdmin: function(id)
+		{
+			return $http({
+    		    method: 'POST',
+    		    url: baseURL + "/DeleteThreadAdmin",
+    		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    		    transformRequest: function(obj)
+    		    {
+    		        var str = [];
+    		        for(var p in obj)str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    		        return str.join("&");
+    		    },
+    		    data: {id: id}
+    		}).then(success, error);
+		},
 		createComment: function(threadID, content)
 		{
-			return $http.post(baseURL + "/CreateForumComment/", {threadID: threadID, content: content}).then(success, error);
+			return $http.post(baseURL + "/CreateThreadComment/", {threadID: threadID, content: content}).then(success, error);
+		},
+		deleteCommentAdmin: function(id)
+		{
+			return $http({
+    		    method: 'POST',
+    		    url: baseURL + "/DeleteThreadCommentAdmin",
+    		    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    		    transformRequest: function(obj)
+    		    {
+    		        var str = [];
+    		        for(var p in obj)str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    		        return str.join("&");
+    		    },
+    		    data: {id: id}
+    		}).then(success, error);
 		}
 	};
 }]);

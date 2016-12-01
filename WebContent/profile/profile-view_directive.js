@@ -5,6 +5,7 @@ angular.module("profile").directive("profileView", function(){
 	    controller: ["$scope", "user", "$location", function forumCtrl($scope, user, $location){
 	    	$scope.go = function(path){$location.path(path);};
 	    	$scope.sortOrder = "username";
+	    	$scope.sortReverse = false;
 	    	$scope.toggling = false;
 	    	$scope.toggleStatus = function(u)
 	    	{
