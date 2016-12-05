@@ -52,6 +52,10 @@ angular.module("services").factory("user", ["$http", function($http){
 		{
 			return $http.get(baseURL + "/UserDetails/" + username).then(success, error);
 		},
+		getAll: function()
+		{
+			return $http.get(baseURL + "/UserDetailsAll").then(success, error);
+		},
 		getAllAdmin: function()
 		{
 			return $http.get(baseURL + "/UserDetailsAllAdmin").then(success, error);

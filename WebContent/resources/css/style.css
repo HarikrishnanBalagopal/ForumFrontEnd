@@ -192,11 +192,31 @@ span.mainView.topicCreator
 }
 .chatWrapper
 {
-	height: 190px;
+	height: 182px;
 }
 .chatMessages
 {
-	width: 360px;
+	width: 384px;
+	height: 182px;
+	overflow: auto;
+}
+.chatMsg
+{
+    background: #f2f2f2;
+    width: 367px;
+    height: 48px;
+    padding: 16px;
+    border-bottom: 1px solid white;
+}
+.chatMsgSender
+{
+    padding: 8px;
+    color: #05a5de;
+}
+.chatMsgTime
+{
+    float: right;
+    color: grey;
 }
 .chatInput
 {
@@ -211,13 +231,18 @@ span.mainView.topicCreator
     margin-left: 8px;
     margin-right: 8px;
 }
-.chatSend
+#chatSend
 {
-	background: rgb(240, 240, 240);
+    background: rgb(53, 114, 255);
     border-radius: 50%;
-    border: none;
-    width: 32px;
-    height: 32px;
+    border: 2px outset;
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+#chatSend:disabled
+{
+	background: grey;
 }
 .footer
 {
@@ -573,12 +598,32 @@ input.loginSubmit
     height: 40px;
     padding: 4px;
     background: rgba(0,0,0,0.1);
-    border: 2px solid black;
+    border: 2px outset;
     border-radius: 4px;
     font-size: 16px;
 }
 .changePictureBtn:hover
 {
-    background: darkgray;
+    border-style: inset;
+    color: #24d4f0;
+}
+.chatBtn
+{
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    background: #0093ff;
     color: white;
+    border-radius: 4px;
+}
+.chatBtn:disabled
+{
+    background: grey;
+}
+.avatar
+{
+	border-radius: 100%;
+  	height: 8rem;
+  	object-fit: cover;
+  	width: 8rem;
 }

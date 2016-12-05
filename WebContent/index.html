@@ -13,6 +13,8 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://use.fontawesome.com/20c7f48529.js"></script>
 
@@ -28,9 +30,13 @@
 <script type="text/javascript" src="forum/forum_module.js"></script>
 <script type="text/javascript" src="forum/forum-list-view_directive.js"></script>
 <script type="text/javascript" src="forum/forum-thread-view_directive.js"></script>
+<script type="text/javascript" src="listing/listing_module.js"></script>
+<script type="text/javascript" src="listing/listing-view_directive.js"></script>
 <script type="text/javascript" src="core/services/services_module.js"></script>
 <script type="text/javascript" src="core/services/user_service.js"></script>
 <script type="text/javascript" src="core/services/forum_service.js"></script>
+<script type="text/javascript" src="core/services/friend_service.js"></script>
+<script type="text/javascript" src="core/services/chat_service.js"></script>
 <title>Cobalt: Forums</title>
 </head>
 <body data-ng-app="forumApp" data-ng-controller="mainController">
@@ -52,7 +58,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a class="navBarBtn" href="#!Forum">Forum</a></li>
 							<li><a class="navBarBtn" href="#">Blog</a></li>
-							<li><a class="navBarBtn" href="#">Listing</a></li>
+							<li><a class="navBarBtn" href="#!Listing">Listing</a></li>
 							<li><a class="navBarBtn" id="idxLoginBtn" data-ng-show="!data.isLoggedIn" href="#!Login">Login</a></li>
 							<li><div data-ng-show="data.isLoggedIn" class="dropdown">
 									<button id="idxAccountBtn" class="navBarBtn btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
