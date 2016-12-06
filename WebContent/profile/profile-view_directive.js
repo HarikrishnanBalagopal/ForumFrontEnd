@@ -2,11 +2,14 @@ angular.module("profile").directive("profileView", function(){
 	return {
 	    restrict: 'A',
 	    scope: {commonData: "="},
-	    controller: ["$scope", "user", "friend", "$location", function forumCtrl($scope, user, friend, $location){
+	    controller: ["$scope", "user", "friend", "listing", "$location", function forumCtrl($scope, user, friend, listing, $location){
 	    	$scope.go = function(path){$location.path(path);};
+    		var updateA = function(i){return function(data){$scope.applications[i].title = data.title;};};
 	    	$scope.sortOrder = "username";
+	    	$scope.sortOrder = "title";
 	    	$scope.sortReverse = false;
 	    	$scope.toggling = false;
+	    	$scope.tab = "friends";
 	    	$scope.toggleStatus = function(u)
 	    	{
 	    		if($scope.toggling)return;
@@ -21,6 +24,22 @@ angular.module("profile").directive("profileView", function(){
 	    		{
 	    			user.reject(u.id, prompt("Reason for rejection:") || "No Reason").
 	    			then(function(data){u.status = 'R'; $scope.toggling = false;});
+	    		}
+	    	};
+	    	$scope.toggleApplicationStatus = function(a)
+	    	{
+	    		if($scope.toggling)return;
+	    		$scope.toggling = true;
+	    		
+	    		if(a.currStatus)
+	    		{
+	    			listing.updateApplicationAdmin(a.id, a.jobID, a.userID, 'Y', "").
+	    			then(function(data){a.status = 'Y'; $scope.toggling = false;});
+	    		}
+	    		else
+	    		{
+	    			listing.updateApplicationAdmin(a.id, a.jobID, a.userID, 'R', prompt("Reason for rejection:") || "No Reason").
+	    			then(function(data){a.status = 'R'; $scope.toggling = false;});
 	    		}
 	    	};
 	    	$scope.refresh = function()
@@ -43,6 +62,11 @@ angular.module("profile").directive("profileView", function(){
 	    				}
 	    			});
 	    		});
+	    		listing.getAllUserApplication().then(function(data1){
+	    			$scope.applications = data1;
+    				for(var i = 0; i < data1.length; i++)
+    					listing.getListingByID(data1[i].jobID).then(updateA(i));
+	    			});
 	    	};
 	    	$scope.sendRequest = function(id)
 	    	{
@@ -56,16 +80,38 @@ angular.module("profile").directive("profileView", function(){
 	    	{
 	    		friend.updateFriendRequest(id, false).then(function(data){$scope.refresh();});
 	    	};
+	    	var searchUsers = function(id)
+	    	{
+	    		for(var i = 0; i < $scope.users.length; i++)
+	    			if(id == $scope.users[i].id)
+	    				return $scope.users[i];
+	    		return null;
+	    	};
 	    	if($scope.commonData.isAdmin)
 	    	{
 	    		user.getAllAdmin().then(function(data){
 	    			$scope.users = [];
 	    			for(var i = 0; i < data.length; i++)
 	    			{
-	    				var user = data[i];
-	    				user.currStatus = user.status == 'Y';
-	    				$scope.users.push(user);
+	    				var u = data[i];
+	    				u.currStatus = u.status == 'Y';
+	    				$scope.users.push(u);
 	    			}
+	    		}).then(function(){
+	    			listing.getAllApplicationAdmin().then(function(data1){
+	    				$scope.applications = data1;
+	    				for(var i = 0; i < data1.length; i++)
+	    				{
+	    					listing.getListingByID(data1[i].jobID).then(updateA(i));
+	    					var u = searchUsers(data1[i].userID);
+	    					if(u)
+	    					{
+	    						$scope.applications[i].username = u.username;
+	    						$scope.applications[i].role = u.role;
+	    					}
+	    					$scope.applications[i].currStatus = data1[i].status == 'Y';
+	    				}
+	    				});
 	    		});
 	    	}
 	    	else $scope.refresh();

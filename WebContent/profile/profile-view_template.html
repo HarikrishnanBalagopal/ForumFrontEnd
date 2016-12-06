@@ -18,7 +18,11 @@
 					Username: {{commonData.user.username}} <br /> Email: {{commonData.user.email}} <br /> Status: {{commonData.user.role == 'S' ? "Student" : (commonData.user.role == 'A' ? "Admin" : "Alumni")}} <br /> Address: {{commonData.user.address}} <br />
 					Contact No: {{commonData.user.contactNo}}
 				</div>
-				<div class="col-xs-12" data-ng-show="!commonData.isAdmin">
+				<div class="col-xs-12">
+					<button data-ng-click="tab = 'friends'" class="custTab {{tab == 'friends' ? 'active' : ''}}">{{commonData.isAdmin ? "Users" : "Friends"}}</button>
+					<button data-ng-click="tab = 'applications'"class="custTab {{tab == 'applications' ? 'active' : ''}}">Applications</button>
+				</div>
+				<div class="col-xs-12" data-ng-show="!commonData.isAdmin && tab == 'friends'">
 					<hr class="col-xs-12" />
 					<div class="col-xs-12 adminControls">
 						<div class="forumSearchWrapper">
@@ -52,7 +56,32 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="col-xs-12" data-ng-show="commonData.isAdmin">
+				<div class="col-xs-12" data-ng-show="!commonData.isAdmin && tab == 'applications'">
+					<hr class="col-xs-12" />
+					<div class="col-xs-12 adminControls">
+						<div class="forumSearchWrapper">
+							<input data-ng-model="applicationSearch" class="forumSearch" type="text" autofocus="autofocus" placeholder="Search..." />
+						</div>
+					</div>
+					<hr class="col-xs-12" />
+					<table class="col-xs-12 table table-striped">
+						<thead>
+							<tr>
+								<th><a data-ng-click="sortOrder2 = 'title'; sortReverse = !sortReverse;" class="cursorPointer">Title <i data-ng-show="sortOrder2 == 'title'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder2 = 'status'; sortReverse = !sortReverse;" class="cursorPointer">Status <i data-ng-show="sortOrder2 == 'status'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder2 = 'reason'; sortReverse = !sortReverse;" class="cursorPointer">Reason <i data-ng-show="sortOrder2 == 'reason'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="a in applications | filter : applicationSearch | orderBy : sortOrder : sortReverse">
+								<td>{{a.title}}</td>
+								<td>{{a.status == 'Y' ? "Accepted" : (a.status == 'N' ? "Pending" : "Rejected")}}</td>
+								<td>{{a.reason}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12" data-ng-show="commonData.isAdmin && tab == 'friends'">
 					<hr class="col-xs-12" />
 					<div class="col-xs-12 adminControls">
 						<div class="forumSearchWrapper">
@@ -83,6 +112,39 @@
 								</td>
 								<td>{{user.reason}}</td>
 								<td><i class="fa {{user.onlineStatus == 'Y' ? 'fa-check' : 'fa-times'}}" style="color: {{user.onlineStatus== 'Y'? 'green': 'red'}}"></i></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-xs-12" data-ng-show="commonData.isAdmin && tab == 'applications'">
+					<hr class="col-xs-12" />
+					<div class="col-xs-12 adminControls">
+						<div class="forumSearchWrapper">
+							<input data-ng-model="applicationSearch" class="forumSearch" type="text" autofocus="autofocus" placeholder="Search..." />
+						</div>
+					</div>
+					<hr class="col-xs-12" />
+					<table class="col-xs-12 table table-striped">
+						<thead>
+							<tr>
+								<th><a data-ng-click="sortOrder2 = 'title'; sortReverse = !sortReverse;" class="cursorPointer">Title <i data-ng-show="sortOrder2 == 'title'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder2 = 'username'; sortReverse = !sortReverse;" class="cursorPointer">Username <i data-ng-show="sortOrder2 == 'username'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder2 = 'role'; sortReverse = !sortReverse;" class="cursorPointer">Role <i data-ng-show="sortOrder2 == 'role'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder2 = 'status'; sortReverse = !sortReverse;" class="cursorPointer">Status <i data-ng-show="sortOrder2 == 'status'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+								<th><a data-ng-click="sortOrder2 = 'reason'; sortReverse = !sortReverse;" class="cursorPointer">Reason <i data-ng-show="sortOrder2 == 'reason'" class="fa {{sortReverse ? 'fa-caret-down' : 'fa-caret-up'}}"></i></a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="a in applications | filter : applicationSearch | orderBy : sortOrder : sortReverse">
+								<td>{{a.title}}</td>
+								<td>{{a.username}}</td>
+								<td>{{a.role == 'S' ? "Student" : (a.role == 'A' ? "Admin" : "Alumni")}}</td>
+								<td>
+									<div class="checkbox">
+										<label><input data-ng-model="a.currStatus" data-ng-click="toggleApplicationStatus(a)" type="checkbox" checked data-toggle="toggle">{{a.status == 'Y' ? "Approved" : (a.status == 'N' ? "New" : "Rejected")}}</label>
+									</div>
+								</td>
+								<td>{{a.reason}}</td>
 							</tr>
 						</tbody>
 					</table>

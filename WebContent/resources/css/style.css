@@ -607,6 +607,18 @@ input.loginSubmit
     border-style: inset;
     color: #24d4f0;
 }
+.custTab
+{
+    width: 100px;
+    height: 40px;
+    background: white;
+    border: 1px solid;
+}
+.custTab:hover, .active.custTab
+{
+    background: grey;
+    color: white;
+}
 .chatBtn
 {
     width: 32px;
@@ -626,4 +638,15 @@ input.loginSubmit
   	height: 8rem;
   	object-fit: cover;
   	width: 8rem;
+}
+
+/*Listing Styles*/
+.listingApplyBtn:disabled
+{
+	background: rgba(0, 0, 0, 0.4);
+	color: grey;
+}
+.listingApplyBtn:disabled:hover
+{
+	color: grey;
 }

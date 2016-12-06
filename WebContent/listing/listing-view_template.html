@@ -1,1 +1,61 @@
-<h1>Test</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 listingWrapper">
+			<div class="forumHeader row">
+				<div class="col-xs-6">
+					<img class="forumLogo" src="resources/images/listingIcon.svg" width="40" height="40" />
+					<h1 class="forumHeading">Listing</h1>
+				</div>
+				<div class="col-xs-6">
+					<div class="pull-right">
+						<div class="forumSearchWrapper">
+							<input data-ng-model="listingSearch" class="forumSearch" type="text" autofocus="autofocus" placeholder="Search..." />
+						</div>
+						<button data-ng-click="showNewListing = true" data-ng-show="commonData.isAdmin" type="button" class="newTopicBtn">
+							<i class="newTopicBtnIcon fa fa-plus"></i>NEW LISTING
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 joinTheConversation" data-ng-show="showNewListing">
+				<h1 class="conversationHeader">New Listing</h1>
+				<div class="col-xs-12 newComment">
+					<div class="col-xs-3 userDetails media">
+						<div class="media-left">
+							<img data-ng-src="http://localhost:8081/ForumBackEnd/resources/images/{{commonData.user.id || 'error'}}.jpg" data-fallback-src="resources/images/userIcon.svg" width="64" height="64" class="avatar"/>
+						</div>
+						<div class="media-body">
+			    			<h4 class="media-heading">{{commonData.user.username}}</h4>
+			    			...
+			  			</div>
+					</div>
+					<div id="reply" class="col-xs-9">
+						<div>
+							<h4>Title</h4>
+							<input data-ng-model="title" class="createTopicTitle" type="text" name="threadTitle" />
+							<h4>Content</h4>
+							<textarea class="col-xs-12 newCommentContent" data-ng-model="content" rows="8" cols="64"></textarea>
+							<div class="col-xs-12 newCommentReplyBtnWrapper">
+								<button class="newCommentReplyBtn" data-ng-click="createListing()" type="button"><i class="replyBtnIcon fa fa-arrow-down"></i>CREATE</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>			
+			<ul class="col-xs-12 list-unstyled">
+				<li data-ng-repeat="l in listings | filter: listingSearch" class="row threadComment">
+					<div class="col-xs-2 listingInfo">
+						<div class="listingTitle">{{l.title}}</div>
+						<div class="listingDate">{{l.createdOn | date: "MMM d"}}</div>
+					</div>
+					<pre class="col-xs-8 commentContent listingContent">{{l.content}}
+						<br /><a data-ng-show="commonData.isAdmin" data-ng-click="deleteListing(l.id)"><i class="fa fa-times"></i></a>
+					</pre>
+					<div class="col-xs-2 listingApply">
+						<button data-ng-disabled="!commonData.isLoggedIn || l.disabled" data-ng-click="createApplication(l.id)" class="newTopicBtn listingApplyBtn">Apply</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
