@@ -204,8 +204,8 @@ span.mainView.topicCreator
 {
     background: #f2f2f2;
     width: 367px;
-    height: 48px;
-    padding: 16px;
+    height: 64px;
+    padding: 8px;
     border-bottom: 1px solid white;
 }
 .chatMsgSender
@@ -217,6 +217,10 @@ span.mainView.topicCreator
 {
     float: right;
     color: grey;
+}
+#scrollTarget
+{
+	height: 1px;
 }
 .chatInput
 {
@@ -230,6 +234,10 @@ span.mainView.topicCreator
     border-radius: 2px;
     margin-left: 8px;
     margin-right: 8px;
+}
+#chatTextInput
+{
+	
 }
 #chatSend
 {
@@ -639,7 +647,82 @@ input.loginSubmit
   	object-fit: cover;
   	width: 8rem;
 }
+.avatarChat
+{
+	border-radius: 100%;
+  	height: 5rem;
+  	object-fit: cover;
+  	width: 5rem;
+}
 
+/*Blog Styles*/
+.blogWrapper
+{
+    padding-bottom: 30px;
+}
+.blog
+{
+    display: block;
+    background: rgba(255,255,255,.05);
+    color: white;
+    font-size: 16px;
+    border: 1px solid rgba(255,255,255, 0.2);
+    min-height: 350px;
+    line-height: 64px;
+    cursor: pointer;
+}
+.blog:hover
+{
+	background: rgba(255,255,255,.1);
+	color: white;
+	text-decoration: none;
+}
+.blogTitle
+{
+	display: inline-block;
+    width: 100px;
+}
+.blogContent
+{
+    height: 219px;
+    overflow: hidden;
+    white-space: pre;
+    line-height: 24px;
+}
+.blogUser
+{
+    padding: 0 10px;
+	background: rgba(0, 0, 0, 0.4);
+}
+.blogCommentsIcon
+{
+	padding: 10px;
+	color: white;
+}
+.blogComments
+{
+	display: inline-block;
+    width: 48px;
+    color: rgba(255,255,255,.7);
+}
+.blogCreator
+{
+	display: inline-block;
+    width: 108px;
+	color: #f8b700;
+}
+.blogTimeStamp
+{
+    display: inline-block;
+    width: 68px;
+    padding: 0 16px 0 0;
+    text-align: right;
+    color: rgba(255,255,255,.7);
+}
+.blogDelete
+{
+	
+}
 /*Listing Styles*/
 .listingApplyBtn:disabled
 {
@@ -649,4 +732,23 @@ input.loginSubmit
 .listingApplyBtn:disabled:hover
 {
 	color: grey;
+}
+/*Animations*/
+.ng-enter
+{
+	animation: slideInRight 0.25s both ease-in 0.25s;
+}
+.ng-leave
+{
+	animation: slideOutLeft 0.25s both ease-in;
+}
+@keyframes slideInRight
+{
+    from    { position:relative; transform:translateX(100%); }
+    to      { position:relative; transform: translateX(0%); }
+}
+@keyframes slideOutLeft
+{
+    from    { transform:translateX(0%); }
+	to      { transform: translateX(-100%); }
 }

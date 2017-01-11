@@ -15,10 +15,6 @@ angular.module("forum").directive("forumListView", function(){
 	    		if(confirm("Confirm Delete Thread:" + id))
 	    			forum.deleteThreadAdmin(id).then(function(data){$scope.refresh();});
 	    	};
-    		$scope.showNew = function()
-    		{
-    			$scope.showNewTopic = true;
-    		};
     		$scope.changePage = function(newPage)
     		{
     			$scope.currPage = newPage;

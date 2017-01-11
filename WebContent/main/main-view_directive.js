@@ -8,7 +8,6 @@ angular.module("main").directive("mainView", ["$location", function($location){
 	    	$scope.max = 160;
 	    	$scope.sendMessage = function(){chat.send($scope.commonData.user.id || -1, $scope.message); $scope.message = "";};
 	    	$scope.go = function(path){$location.path(path);};
-
 	    	chat.receive().then(null, null, function(message){
 	    		user.getByID(message.senderID).then(function(data){
 	    			message.username = data.username;

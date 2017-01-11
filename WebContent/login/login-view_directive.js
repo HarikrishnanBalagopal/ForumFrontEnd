@@ -2,7 +2,7 @@ angular.module("login").directive("loginView", ["$location", function($location)
 	return {
 	    restrict: 'A',
 	    scope: {commonData: "="},
-	    controller: ["$scope", "user", function forumCtrl($scope, user){
+	    controller: ["$scope", "$cookies", "user", function forumCtrl($scope, $cookies, user){
 	    	$scope.showError = false;
 	    	$scope.error = "";
 	    	$scope.login = function()
@@ -10,13 +10,15 @@ angular.module("login").directive("loginView", ["$location", function($location)
 	    		var loadData = function()
 	    		{
 	    			user.getByUsername($scope.username).then(function(data){
-	    				$scope.commonData.user = data;
-	    				$scope.commonData.isLoggedIn = true;
+	    				var u = {};
+	    				u.user = $scope.commonData.user = data;
+	    				u.isLoggedIn = $scope.commonData.isLoggedIn = true;
 	    				if(data.role == 'A')
-	    					$scope.commonData.isAdmin = true;
+	    					u.isAdmin = $scope.commonData.isAdmin = true;
+	    				$cookies.putObject("userData", u);
 	    				$location.path("/Home");
 	    			});
-	    		}
+	    		};
 	    		
 	    		if(!$scope.username || !$scope.password)
 	    			return;

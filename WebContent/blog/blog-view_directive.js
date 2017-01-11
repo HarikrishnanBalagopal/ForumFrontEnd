@@ -1,20 +1,20 @@
-angular.module("forum").directive("forumThreadView", function(){
+angular.module("blog").directive("blogView", function(){
 	return {
 	    restrict: 'A',
 	    scope: {commonData: "="},
-	    controller: ["$scope", "forum", "user", "$location", "$routeParams", "$anchorScroll", function forumCtrl($scope, forum, user, $location, $routeParams, $anchorScroll){
+	    controller: ["$scope", "blog", "user", "$location", "$routeParams", "$anchorScroll", function forumCtrl($scope, blog, user, $location, $routeParams, $anchorScroll){
 	    	$scope.currPage = 0;
 	    	$scope.go = function(path){$location.path(path);};
 	    	$scope.gotoReply = function(){$location.hash('reply'); $anchorScroll();};
 	    	$scope.reply = function()
 	    	{
-	    		forum.createComment($routeParams.threadID, $scope.content).
+	    		blog.createComment($routeParams.blogID, $scope.content).
 	    		then(function(data){$scope.refresh();});
 	    	};
 	    	$scope.deleteComment = function(id)
 	    	{
 	    		if(confirm("Confirm Delete Comment:" + id))
-	    			forum.deleteCommentAdmin(id).then(function(data){$scope.refresh();});
+	    			blog.deleteCommentAdmin(id).then(function(data){$scope.refresh();});
 	    	};
 	    	$scope.changePage = function(newPage)
     		{
@@ -34,14 +34,14 @@ angular.module("forum").directive("forumThreadView", function(){
 	    	{
 	    		var userMap = new Map();
 	    		var asyncDetails = function(id){return function(data){userMap.set(id, data);};};
-	    		forum.getByID($routeParams.threadID).then(function(data){
-					$scope.thread = data;
+	    		blog.getByID($routeParams.blogID).then(function(data){
+					$scope.blog = data;
 					userMap.set(data.userID, {requested: true});	
 					user.getByID(data.userID).then(asyncDetails(data.userID));
 				});
 				$scope.pages = [];
 	    		$scope.pages.push({id: 0, commentsList: []});
-	    		forum.getAllComments($routeParams.threadID).then(function(data){
+	    		blog.getAllComments($routeParams.blogID).then(function(data){
 	    			for(var i = 0, n = 0, p = 0; i < data.length; i++, n++)
 	    			{
 	    				if(n > 15)
@@ -57,12 +57,12 @@ angular.module("forum").directive("forumThreadView", function(){
 	    				}
 	    				$scope.pages[p].commentsList.push(comment);
 	    			}
-	    			$scope.threadUsers = userMap;
+	    			$scope.blogUsers = userMap;
 	    		});
 	    	};
 	    	
 	    	$scope.refresh();
 	    }],
-	    templateUrl: "forum/forum-thread-view_template.html"
+	    templateUrl: "blog/blog-view_template.html"
 	};
 });

@@ -1,0 +1,78 @@
+<div class="container">
+	<div class="forumHeader row">
+		<div class="col-xs-6">
+			<img class="forumLogo" src="resources/images/blogIcon.svg"
+				width="40" height="40" />
+			<h1 class="forumHeading">Blogs</h1>
+		</div>
+		<div class="col-xs-6">
+			<div class="pull-right">
+				<div class="forumSearchWrapper">
+					<input data-ng-model="blogSearch" class="forumSearch" type="text"
+						autofocus="autofocus" placeholder="Search..." />
+				</div>
+				<button data-ng-click="showNewBlog = true" type="button" class="newTopicBtn">
+					<i class="newTopicBtnIcon fa fa-plus"></i>NEW BLOG
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-xs-12 joinTheConversation" data-ng-show="showNewBlog">
+		<h1 class="conversationHeader">Join the Conversation</h1>
+		<div class="col-xs-12 newComment">
+			<div class="col-xs-3 userDetails media">
+				<div class="media-left">
+					<img data-ng-src="http://localhost:8081/ForumBackEnd/resources/images/{{commonData.user.id || 'error'}}.jpg" data-fallback-src="resources/images/userIcon.svg" width="64" height="64" class="avatar"/>
+				</div>
+				<div class="media-body">
+	    			<h4 class="media-heading">{{commonData.user.username}}</h4>
+	    			...
+	  			</div>
+			</div>
+			<div id="reply" class="col-xs-9">
+				<div data-ng-show="!commonData.isLoggedIn" class="newCommentLogin">
+					Have something to say? Log in to join the conversation.
+					<div class="replyLoginBtnWrapper"><button class="replyLoginBtn" data-ng-click="go('/Login');" type="button">LOGIN</button></div>
+				</div>
+				<div data-ng-show="commonData.isLoggedIn">
+					<h4>Title</h4>
+					<input data-ng-model="title" class="createTopicTitle" type="text" name="threadTitle" />
+					<h4>Content</h4>
+					<textarea class="col-xs-12 newCommentContent" data-ng-model="content" rows="8" cols="64"></textarea>
+					<div class="col-xs-12 newCommentReplyBtnWrapper">
+						<button class="newCommentReplyBtn" data-ng-click="createBlog()" type="button"><i class="replyBtnIcon fa fa-arrow-down"></i>CREATE</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<br />
+	<div class="forumContent">
+		<div class="col-xs-4 blogWrapper" data-ng-show="blog.status == 'Y' || commonData.isAdmin" data-ng-repeat="blog in pages[currPage].blogsList | filter: blogSearch">
+		<a class="blog" data-ng-href="#!Blog/{{blog.id}}">
+			<i class="topicIcon fa fa-file-o"></i><span class="blogTitle">{{blog.title}}</span>
+			<span class="pull-right blogTimeStamp">{{blog.diff < (4 * 24 * 3600 * 1000) ? blog.diffStr : blog.createdOn}}</span>
+			<span class="col-xs-12 blogContent">{{blog.content}}</span>
+			<span class="col-xs-12 blogUser">
+				<img data-ng-src="http://localhost:8081/ForumBackEnd/resources/images/{{blog.userID || 'error'}}.jpg" data-fallback-src="resources/images/userIcon.svg" width="64" height="64" class="avatarChat" />
+				<span class="blogCreator">{{blogUsers.get(blog.userID).username}}</span>
+				<span class="blogComments"><i class="blogCommentsIcon fa fa-comment"></i>{{blog.totalComments}}</span>
+				<span class="blogComments"><i class="blogCommentsIcon fa fa-thumbs-up"></i>{{blog.likes}}</span>
+				<span class="blogComments"><i class="blogCommentsIcon fa fa-thumbs-down"></i>{{blog.dislikes}}</span>
+				<span class="blogDelete" data-ng-click="deleteBlog($event, blog.id);" data-ng-show="commonData.isAdmin"><i class="topicDeleteIcon fa fa-times"></i></span>
+				<span class="blogAccept" data-ng-click="acceptRejectBlog($event, blog.id, true);" data-ng-show="commonData.isAdmin && blog.status == 'N'">Accept /</span>
+				<span class="blogReject" data-ng-click="acceptRejectBlog($event, blog.id, false);" data-ng-show="commonData.isAdmin && blog.status == 'N'"> Reject</span>
+				<span class="blogAccepted" data-ng-show="commonData.isAdmin && blog.status != 'N'">{{blog.status == 'Y' ? "Accepted" : "Rejected"}}</span>
+			</span>
+			<span class="clearfix"></span>
+		</a>
+		</div>
+		<div class="col-xs-12 topicPages">
+			<a data-ng-click="prevPage()" class="topicsListPrev"><i class="fa fa-arrow-left"></i></a>
+			<a data-ng-repeat="page in pages" data-ng-click="changePage(page.id)" class="pageNumber">{{page.id + 1}}</a>
+			<a data-ng-click="nextPage()" class="topicsListNext"><i class="fa fa-arrow-right"></i></a>
+		</div>
+	</div>
+</div>

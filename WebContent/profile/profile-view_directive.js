@@ -10,6 +10,11 @@ angular.module("profile").directive("profileView", function(){
 	    	$scope.sortReverse = false;
 	    	$scope.toggling = false;
 	    	$scope.tab = "friends";
+	    	$scope.onSuccess = function(response)
+	    	{
+	    		alert("Image uploaded");
+	    		$scope.go("/Home");
+	    	};
 	    	$scope.toggleStatus = function(u)
 	    	{
 	    		if($scope.toggling)return;
